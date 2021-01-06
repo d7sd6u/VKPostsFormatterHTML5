@@ -55,7 +55,7 @@ class Formatter {
 		$content = '<br/>';
 
 		if($this->post['comments'] === null) {
-			$content .= 'Comments are disabled or their extraction failed';
+			$content .= '<br/>Comments are disabled or their extraction failed';
 			return $content;
 		}
 
