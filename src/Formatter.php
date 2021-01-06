@@ -207,7 +207,8 @@ class Formatter {
 					$content .= '</video><br/>';
 				} else {
 					// if no iframe or video was found, then it is most likely private video and only link to video in post will work, not direct one
-					$content .= "<a href='https://vk.com/post$post[id]?z=video$video[id]'>$videoPreview</a><br/>";
+					$postId = $this->post['id'];
+					$content .= "<a href='https://vk.com/post$postId?z=video$video[id]'>$videoPreview</a><br/>";
 				}
 			}
 		}
