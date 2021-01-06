@@ -11,7 +11,8 @@ class Formatter {
 		'descendingCommentThresholdOffset' => 0,
 		'dontAddDeletedAmount' => false,
 		'topCommentThreshold' => 0,
-		'branchCommentThreshold' => 0
+		'branchCommentThreshold' => 0,
+		'dontConvertEmoji' => false
 	);
 
 	public function __construct($options = array()) {
@@ -29,7 +30,11 @@ class Formatter {
 	}
 
 	public function formatContent() {
-		$content = $this->post['text']['html'];
+		if($this->options['dontConvertEmoji']) {
+			$content = $this->post['text']['emojis'];
+		} else {
+			$content = $this->post['text']['html'];
+		}
 
 		$content .= $this->formatImages($this->post['images']);
 		$content .= $this->formatVideos($this->post['videos']);
@@ -159,7 +164,12 @@ class Formatter {
 		$content .= "<img src='{$comment['author']['avatar']}'/>";
 		$content .= '</a><br/><br/>';
 
-		$content .= $comment['text']['html'];
+		
+		if($this->options['dontConvertEmoji']) {
+			$content .= $comment['text']['emojis'];
+		} else {
+			$content .= $comment['text']['html'];
+		}
 
 		$content .= $this->formatImages($comment['images']);
 		$content .= $this->formatVideos($comment['videos']);
