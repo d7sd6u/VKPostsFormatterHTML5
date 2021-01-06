@@ -54,6 +54,11 @@ class Formatter {
 	public function formatComments() {
 		$content = '';
 
+		if($this->post['comments'] === null) {
+			$content .= 'Comments are disabled or their extraction failed';
+			return $content;
+		}
+
 		$commentsAmount = count($this->post['comments']);
 		foreach($this->post['comments'] as $comment) {
 			if(isset($comment['replies'])) {
