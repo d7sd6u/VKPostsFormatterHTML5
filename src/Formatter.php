@@ -31,10 +31,10 @@ class Formatter {
 	public function formatContent() {
 		$content = $this->post['text']['html'];
 
-		$content .= $this->formatImages();
-		$content .= $this->formatVideos();
-		$content .= $this->formatFiles();
-		$content .= $this->formatAudios();
+		$content .= $this->formatImages($this->post['images']);
+		$content .= $this->formatVideos($this->post['videos']);
+		$content .= $this->formatFiles($this->post['files']);
+		$content .= $this->formatAudios($this->post['audios']);
 		$content .= $this->formatPool();
 		$content .= $this->formatArticle();
 		$content .= $this->formatMap();
@@ -170,19 +170,19 @@ class Formatter {
 		return $content;
 	}
 
-	private function formatImages() {
+	private function formatImages($images) {
 		$content = '';
-		foreach($this->post['images'] as $image) {
+		foreach($images as $image) {
 			$content .= "<br/><a href='$image[original]'><img src='$image[thumb]'/></a><br/>";
 		}
 		return $content;
 	}
 
-	private function formatVideos() {
+	private function formatVideos($videos) {
 		$content = '';
-		if(!empty($this->post['videos'])) {
+		if(!empty($videos)) {
 			$content .= '<br/><br/><i>Attached videos:</i><br/><br/>';
-			foreach($this->post['videos'] as $video) {
+			foreach($videos as $video) {
 				// TODO: handle blocked videos
 				// if successfully extracted video preview, add it to fallback
 				if(empty($video['image'])) {
@@ -228,22 +228,22 @@ class Formatter {
 		return $content;
 	}
 
-	private function formatFiles() {
+	private function formatFiles($files) {
 		$content = '';
-		if(!empty($this->post['files'])) {
+		if(!empty($files)) {
 			$content .= '<br/><br/><i>Attached files:</i><br/><br/>';
-			foreach($this->post['files'] as $file) {
+			foreach($files as $file) {
 				$content .= "<a href='$file[url]'>$file[title]</a><br/>";
 			}
 		}
 		return $content;
 	}
 
-	private function formatAudios() {
+	private function formatAudios($audios) {
 		$content = '';
-		if(!empty($this->post['audios'])) {
+		if(!empty($audios)) {
 			$content .= '<br/><br/><i>Attached audio:</i><br/><br/>';
-			foreach($this->post['audios'] as $audio) {
+			foreach($audios as $audio) {
 				//$content .= '<audio src="' . $audio['url'] . '" controls>';
 				$content .= "Audio: <a href='$audio[url]'>$audio[title]</a><br/>";
 				//$content .= '</audio>';
