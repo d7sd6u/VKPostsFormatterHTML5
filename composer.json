@@ -1,0 +1,26 @@
+{
+	"name": "d7sd6u/vk-posts-formatter-html5",
+	"description": "Library for formatting VKPostsExtractorParser and VKPostsExtractorApi output in plain HTML5.",
+	"type": "library",
+	"keywords": ["vk", "posts"],
+	"homepage": "https://github.com/d7sd6u/VKPostsFormatterHTML5",
+	"license": "LGPL-2.1-or-later",
+	"authors": [
+		{
+			"name": "d7sd6u",
+			"homepage": "https://github.com/d7sd6u"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/d7sd6u/VKPostsFormatterHTML5/issues/",
+		"wiki": "https://github.com/d7sd6u/VKPostsFormatterHTML5/wiki/",
+		"source": "https://github.com/d7sd6u/VKPostsFormatterHTML5/",
+		"rss": "https://github.com/d7sd6u/VKPostsFormatterHTML5/commits/master.atom"
+	},
+	"autoload": {
+		"files": [ "src/Formatter.php" ]
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^9"
+	}
+}
