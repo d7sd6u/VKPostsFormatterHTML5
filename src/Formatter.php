@@ -52,7 +52,7 @@ class Formatter {
 	}
 
 	public function formatComments() {
-		$content = '';
+		$content = '<br/>';
 
 		if($this->post['comments'] === null) {
 			$content .= 'Comments are disabled or their extraction failed';
@@ -67,9 +67,9 @@ class Formatter {
 		}
 
 		if($commentsAmount === 0) {
-			$content .= '<br/>No comments.';
+			$content .= 'No comments.';
 		} else {
-			$content .= "<br/><details><summary>$commentsAmount+ comments:</summary><br/>";
+			$content .= "<details><summary>$commentsAmount+ comments:</summary><br/>";
 		}
 
 		$firstIteration = true;
